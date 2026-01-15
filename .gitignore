@@ -1,0 +1,5 @@
+.vscode
+mysql-data/
+mysql-init/
+target/
+*.log
