@@ -7,6 +7,8 @@ package top.lisang.admin.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,9 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 import top.lisang.admin.common.convention.Result;
 import top.lisang.admin.common.convention.Results;
+import top.lisang.admin.dto.req.UserRegisterReqDTO;
 import top.lisang.admin.dto.resp.UserActualRespDTO;
 import top.lisang.admin.dto.resp.UserRespDTO;
 import top.lisang.admin.service.UserService;
+
 
 
 /**
@@ -43,6 +47,12 @@ public class UserController {
     public Result<Boolean> getMethodName(@RequestParam("username") String username) {
         
         return Results.success(userService.hasUsername(username));
+    }
+    
+    @PostMapping("/user")
+    public Result<Void> register(@RequestBody UserRegisterReqDTO requestParam) {
+        userService.register(requestParam);
+        return Results.success();
     }
     
 

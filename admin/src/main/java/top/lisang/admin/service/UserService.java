@@ -8,6 +8,7 @@ package top.lisang.admin.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import top.lisang.admin.dao.entity.UserDO;
+import top.lisang.admin.dto.req.UserRegisterReqDTO;
 import top.lisang.admin.dto.resp.UserActualRespDTO;
 import top.lisang.admin.dto.resp.UserRespDTO;
 
@@ -21,4 +22,7 @@ public interface UserService extends IService<UserDO> {
     UserActualRespDTO getActualUserByUsername(String username);
 
     Boolean hasUsername(String username);
+
+    void register(UserRegisterReqDTO userRegisterReqDTO);
+
 }
